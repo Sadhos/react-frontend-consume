@@ -1,22 +1,21 @@
 
 import styled from 'styled-components';
-import { ShoppingCartOutlined } from '@material-ui/icons';
-import Badge from '@mui/material/Badge';
+
+import { CartFill } from "react-bootstrap-icons";
+
 import { logout } from '../firebase'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import React, { useContext,useEffect,useState } from 'react';
-import { AuthProvider, AuthContext} from '../userContext';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../userContext';
 import { useAuth } from '../firebase';
+
+
 const Container = styled.div`
     height: 60px;
     background-color: white;
 `;
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: #BF4F74;
-`;
+
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
@@ -47,17 +46,8 @@ const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
 `
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  
-  align-items: center;
-  margin-left: 20px;
-`
-const Input = styled.input`
-border: none;
 
-`
+
 const Logo = styled.h1`
 font-weight: bold;
 `
@@ -88,8 +78,8 @@ const Navbar = () => {
   const userLogged = useAuth();
   const [numberOfItems, setNumberOfItems] = useState(0);
 
-  const {isLogged, setToLoggedOut,cartItems,getCartItems,userId,setCartItemsToEmpty,setUserId} = useContext(AuthContext);
- 
+  const { isLogged, setToLoggedOut, cartItems, getCartItems, userId, setCartItemsToEmpty, setUserId } = useContext(AuthContext);
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -106,17 +96,17 @@ const Navbar = () => {
   }
 
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchCartItems = async () => {
       await getCartItems(userId);
     };
     fetchCartItems();
-  },[]);
-  
+  }, []);
 
 
 
-  
+
+
 
   return (
     <Container>
@@ -137,9 +127,11 @@ const Navbar = () => {
             navigate('/login');
           }}>SIGN IN</MenuItem>}
           <MenuItem>
-            <Badge badgeContent={cartItems.length} color="primary">
-              <ShoppingCartOutlined onClick={()=> navigate('/shoppingcart')}/>
-            </Badge>
+          <CartFill onClick={()=> navigate('/shoppingcart')} size={30} color='blue'/>
+          <span className="item-count">{cartItems.length}</span>
+            {/*  <Badge badgeContent={cartItems.length} color="primary">
+              <CartFill onClick={()=> navigate('/shoppingcart')}/>
+            </Badge> */}
           </MenuItem>
         </Right>
       </Wrapper>

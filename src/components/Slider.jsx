@@ -1,8 +1,9 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+
 import { useState } from "react";
 import styled from "styled-components";
 
 import { mobile } from "../responsive";
+import  {ArrowRight, ArrowLeft} from 'react-bootstrap-icons'
 
 const Container = styled.div`
 width: 100%;
@@ -90,7 +91,7 @@ const Slider = ({products}) => {
   return (
    <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowLeftOutlined />
+        <ArrowLeft />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {products.map((item) => (
@@ -107,7 +108,7 @@ const Slider = ({products}) => {
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowRightOutlined />
+        <ArrowRight />
       </Arrow>
     </Container>
   )

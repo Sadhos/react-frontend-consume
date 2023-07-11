@@ -1,9 +1,9 @@
-import { Add, Remove } from "@material-ui/icons";
+
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 
 import Navbar from "../components/Navbar";
-
+import {Plus, Dash} from 'react-bootstrap-icons'
 import { mobile } from "../responsive";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
@@ -127,9 +127,9 @@ const Product = () => {
           <Price>${product.price}</Price>
           <AddContainer>
             <AmountContainer>
-              <Remove />
+             <Plus/>
               <Amount>1</Amount>
-              <Add />
+              <Dash/>
             </AmountContainer>
             <Button disabled={isLogged == false} onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>

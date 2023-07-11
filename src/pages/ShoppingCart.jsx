@@ -1,4 +1,4 @@
-import { Add, Remove } from "@material-ui/icons";
+
 
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
@@ -10,6 +10,7 @@ import { mobile } from "../responsive";
 import { useContext } from "react";
 import { AuthContext } from "../userContext";
 import { useNavigate } from "react-router-dom";
+import {Plus, Dash} from 'react-bootstrap-icons';
 
 
 
@@ -255,7 +256,7 @@ const Cart = () => {
                     </ProductDetail>
                     <PriceDetail>
                       <ProductAmountContainer>
-                        <Button onClick={()=>{if(item.qty > 0) increaseQty(item.id)}}><Add /></Button>
+                        <Button onClick={()=>{if(item.qty > 0) increaseQty(item.id)}}><Plus /></Button>
                         <ProductAmount>{item.qty}</ProductAmount>
                         <Button onClick={async ()=>{
                           if(item.qty == 1){
@@ -265,7 +266,7 @@ const Cart = () => {
                             decreaseQty(item.id);
                           }
 
-                        }} ><Remove /></Button>
+                        }} ><Dash /></Button>
                       </ProductAmountContainer>
                       <ProductPrice>$ {item.price}</ProductPrice>
                     </PriceDetail>

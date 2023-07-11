@@ -1,12 +1,9 @@
-import {
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@material-ui/icons";
+
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../userContext";
-
+import { CartFill, Search } from "react-bootstrap-icons";
 const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -86,10 +83,10 @@ const Product = ({ item }) => {
       <Image src={item.imageUrl} />
       <Info>
         <Icon disabled={isLogged == false}>
-          <ShoppingCartOutlined onClick={()=>handleClick("cart")} />
+          <CartFill onClick={()=>handleClick("cart")} />
         </Icon>
        <Icon>
-          <SearchOutlined onClick={()=>handleClick("detail")}/>
+          <Search onClick={()=>handleClick("detail")}/>
         </Icon>
         
       </Info>
