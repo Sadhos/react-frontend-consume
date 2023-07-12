@@ -45,11 +45,11 @@ function App() {
   }, []);
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <AuthProvider>
         <Routes>
 
-          <Route path="/react-frontend-consume" element={<Home products={products} productCategories={productCategories} />} />
+          <Route path="/" element={<Home products={products} productCategories={productCategories} />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
